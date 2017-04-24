@@ -5,6 +5,9 @@ WORKDIR /src/app
 
 COPY . /src/app
 
+ENV MONGO_ADDRESS mongo
+ENV MONGO_PORT 27017
+
 RUN npm install
 
 EXPOSE 80
