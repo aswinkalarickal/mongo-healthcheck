@@ -1,16 +1,20 @@
 var http = require('http');
-var exec = require('child_process').exec;
+var MongoClient = require('mongodb').MongoClient;
 
 var server = http.createServer(function(request, response) {
-  var cmd = "echo 'db.stats().ok' | mongo 127.0.0.1:27017/test --quiet";
-  exec(cmd, function(error, stdout, stderr) {
-    if(error != null) {
+  var mongo_address = process.env.MONGO_ADDRESS || 'localhost';
+  var mongo_port = process.env.MONGO_PORT || '27017';
+
+  var url = 'mongodb://' + mongo_address + ':' + mongo_port + '/test';
+  MongoClient.connect(url, function(err, db) {
+    if(err != null) {
       response.writeHead(404, {'Content-Type': 'application/json'});
-      response.end(JSON.stringify({err: stderr}));
+      response.end(JSON.stringify({err: err}));
       return;
     }
     response.writeHead(200, {'Content-Type': 'application/json'});
-    response.end(JSON.stringify({status: 'ok', stdout: stdout}));
+    response.end(JSON.stringify({status: 'ok'}));
+    db.close();
   });
 });
 
