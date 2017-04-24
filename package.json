@@ -1,0 +1,26 @@
+{
+  "name": "mongo-healthcheck",
+  "version": "1.0.0",
+  "description": "Healthcheck for MongoDB running on Docker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aswinkalarickal/mongo-healthcheck.git"
+  },
+  "keywords": [
+    "mongo",
+    "mongodb",
+    "health",
+    "check"
+  ],
+  "author": "Aswin Kalarickal <mail@aswink.in>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aswinkalarickal/mongo-healthcheck/issues"
+  },
+  "homepage": "https://github.com/aswinkalarickal/mongo-healthcheck#readme"
+}
